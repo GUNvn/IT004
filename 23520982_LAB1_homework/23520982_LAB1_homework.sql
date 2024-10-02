@@ -35,8 +35,10 @@ SELECT TenCongTy, DiaChi FROM CongTy WHERE LinhVuc = N'Phát triển phần mề
 SELECT TenDuAn FROM DuAn WHERE YEAR(NgayKetThuc) = 2023;
 
 -- 63. Hiển thị tên và cấp độ của các kỹ năng trong bảng ChuyenGia_KyNang.
-SELECT TenKyNang, CapDo FROM ChuyenGia_KyNang;
-
+SELECT 
+    (SELECT TenKyNang FROM KyNang WHERE MaKyNang = c.MaKyNang) AS TenKyNang,
+    c.CapDo
+FROM ChuyenGia_KyNang c;
 -- 64. Liệt kê mã chuyên gia và vai trò trong các dự án từ bảng ChuyenGia_DuAn.
 SELECT MaChuyenGia, VaiTro FROM ChuyenGia_DuAn;
 
